@@ -1,0 +1,22 @@
+.header-title {
+  float: left;
+  height: 50px;
+  line-height: 20px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.header-user-info {
+  float: right;
+  margin-right: 20px;
+}
+
+.header-dropdown-link {
+  display: inline-block;
+  height: 100%;
+  padding: 15px 0 15px 15px;
+  text-decoration: none;
+  color: #b6e1ec;
+  transition: all .3s;
+}

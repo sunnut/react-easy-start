@@ -1,0 +1,64 @@
+.home-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #b6e1ec;
+  background-color: #161C25;
+}
+
+.home-wrapper-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  border-bottom: 1px solid #343A40;
+  background-color: #1E2532;
+  color: #fff;
+  z-index: 1030;
+  overflow: visible;
+}
+
+.home-wrapper-container {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sidebar-scroll {
+  position: fixed;
+  width: 180px;
+  height: 100%;
+  z-index: 100;
+  overflow: hidden;
+  outline: none;
+}
+
+.home-wrapper-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+  overflow: visible!important;
+  z-index: 100;
+  background: #001529;
+  -webkit-transition: height .35s ease;
+  -moz-transition: height .35s ease;
+  -o-transition: height .35s ease;
+  transition: height .35s ease;
+}
+
+.home-wrapper-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 240px;
+  padding: 20px;
+}

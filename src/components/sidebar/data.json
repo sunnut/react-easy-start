@@ -1,0 +1,33 @@
+[{
+  "icon": "home",
+  "key": "overview",
+  "label": "总览",
+  "url": "/home/overview"
+}, {
+  "icon": "fork",
+  "key": "topo",
+  "label": "拓扑",
+  "url": "/home/topo"
+}, {
+  "icon": "area-chart",
+  "key": "sub-res",
+  "label": "一级菜单",
+  "children": [{
+    "key": "rrs",
+    "label": "二级菜单001",
+    "url": "/home/rrs"
+  }, {
+    "key": "hms",
+    "label": "二级菜单002",
+    "url": "/home/hms"
+  }, {
+    "key": "mm",
+    "label": "二级菜单003",
+    "url": "/home/mm"
+  }]
+}, {
+  "icon": "setting",
+  "key": "setting",
+  "label": "设置",
+  "url": "/home/setting"
+}]
