@@ -1,18 +1,67 @@
 .banner {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  height: 45px;
-  background-color: #1F2325;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  height: 60px;
+  color: #ffffff;
+  background-color: #20232a;
+  z-index: 1;
 }
 
-.widthLimit {
-  position: relative;
-  margin: 0 auto;
-  padding: 0 40px;
-  max-width: 1360px;
-  line-height: 45px;
+.banner-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1340px) {
+  .banner-wrapper {
+    max-width: 1260px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .banner-wrapper {
+    width: 90%;
+  }
+}
+
+.banner-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+.banner-title-link {
+  display: flex;
+  margin-right: 10px;
+  height: 100%;
+  align-items: center;
+  color: #61dafb;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  .banner-title-link {
+    width: calc(100% / 6);
+  }
+}
+
+.banner-title {
+  color: inherit;
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .content {
@@ -20,7 +69,6 @@
   top: 45px;
   bottom: 70px;
   width: 100%;
-  background-color: #1F2325;
 }
 
 .login-form {

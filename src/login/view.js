@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { actions as loginActions } from './index';
 import styles from './login.module.css';
 
-import logoImage from '../assets/images/logo.jpg';
 import verifyCodeImage from '../assets/images/verifycode.jpg';
 
 class LoginPage extends Component {
@@ -54,20 +53,27 @@ class LoginPage extends Component {
     return (
         <div>
           <div className={styles.banner}>
-            <div className={styles.widthLimit}>
-              <img src={logoImage} width="30" height="20" alt="" />
+            <div className={styles['banner-wrapper']}>
+              <div className={styles['banner-title-wrapper']}>
+                  <a className={styles['banner-title-link']} href="/">
+                      <img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
+                      alt="" height="20" />
+                      <span className={styles['banner-title']}>XXX系统</span>
+                  </a>
+              </div>
             </div>
           </div>
           <div className={styles.content}>
             <div className={styles['login-form']}>
-              <h1>资质认证</h1>
+              <h1>用户名密码登录</h1>
               <ul>
                 <li className={styles.errorTip}>
                   <div className={styles['err-msg']}>{this.state.errMsg}</div>
                 </li>
                 <li>
                   <Input
-                      placeholder="请输入账号"
+                      placeholder="用户名"
                       prefix={<Icon type="user" />}
                       suffix={userNameSuffix}
                       value={userName}
@@ -79,7 +85,7 @@ class LoginPage extends Component {
                 <li className={styles['password-field']}>
                   <Input
                       type="password"
-                      placeholder="请输入密码"
+                      placeholder="密码"
                       prefix={<Icon type="eye" />}
                       value={password}
                       onChange={this.onChangePassword}
@@ -99,7 +105,7 @@ class LoginPage extends Component {
                 </li>
               </ul>
               <div className={styles['button-area']}>
-                <Button type="primary" onClick={this.login}>登录</Button>
+                <Button type="primary" onClick={this.login} block>登录</Button>
               </div>
             </div>
           </div>

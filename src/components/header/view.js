@@ -29,7 +29,7 @@ const header = () => {
         </div>
         <div className={styles['header-user-info']}>
           <Dropdown overlay={menu} placement="bottomRight">
-            <a className={styles['header-dropdown-link']} href="#">
+            <a className={styles['header-dropdown-link']} href="/">
               <Icon type="user" /> {LocalStorage.get('TA-username') } <Icon type="down" />
             </a>
           </Dropdown>
