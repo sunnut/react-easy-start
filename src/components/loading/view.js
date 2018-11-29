@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import styles from './loading.module.css';
 
-const Loading = (props: any) => {
+const Loading = (props) => {
   const loadingStyle = {
     display: props.show ? 'block' : 'none'
   };
@@ -17,7 +17,7 @@ const Loading = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
   const loadingData = state.loading;
   
   return {

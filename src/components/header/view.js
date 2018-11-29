@@ -20,7 +20,7 @@ const menu = (
     </Menu>
 );
 
-const header = () => {
+const Header = () => {
   return (
       <div>
         <div className={styles['header-title']}>
@@ -38,4 +38,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
