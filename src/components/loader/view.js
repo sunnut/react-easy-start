@@ -4,11 +4,11 @@ import styles from './loader.module.css';
 
 const loader = () => {
   return (
-      <div className={styles['loader-wrapper']}>
-        <div className={styles['loader-content']}>
-          <Spin tip="加载中..." />
-        </div>
+    <div className={styles['loader-wrapper']}>
+      <div className={styles['loader-content']}>
+        <Spin tip="加载中..." />
       </div>
+    </div>
   );
 };
 

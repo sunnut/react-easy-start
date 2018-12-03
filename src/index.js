@@ -20,20 +20,20 @@ let locale;
 let messages;
 
 if (language === 'zh') {
-    locale = 'zh';
-    messages = ZH_WORDS;
+  locale = 'zh';
+  messages = ZH_WORDS;
 } else if (language === 'en') {
-    locale = 'en';
-    messages = EN_WORDS;
+  locale = 'en';
+  messages = EN_WORDS;
 }
 
 ReactDOM.render(
-    <IntlProvider locale={locale} messages={messages}>
-        <Provider store={store}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </Provider>
-    </IntlProvider>,
-    document.getElementById('root')
+  <IntlProvider locale={locale} messages={messages}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </IntlProvider>,
+  document.getElementById('root')
 );

@@ -5,14 +5,14 @@ import { view as Login } from './login';
 import { view as Home } from './pages';
 
 const App = () => {
-    return (
-        <div>
-            <Loading />
-            <Route path="/" component={Login} exact />
-            <Route path="/login" component={Login} />
-            <Route path="/home" component={Home} />
-        </div>
-    );
+  return (
+    <>
+      <Loading />
+      <Route path="/" component={Login} exact />
+      <Route path="/login" component={Login} />
+      <Route path="/home" component={Home} />
+    </>
+  );
 };
 
 export default App;

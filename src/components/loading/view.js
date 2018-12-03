@@ -9,11 +9,11 @@ const Loading = (props) => {
   };
 
   return (
-      <div style={loadingStyle} className={styles['loading-wrapper']}>
-        <div className={styles['loading-content']}>
-          <Spin size="large" tip="加载中..." />
-        </div>
+    <div style={loadingStyle} className={styles['loading-wrapper']}>
+      <div className={styles['loading-content']}>
+        <Spin size="large" tip="加载中..." />
       </div>
+    </div>
   );
 };
 
