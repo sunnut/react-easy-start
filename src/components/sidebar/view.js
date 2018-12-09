@@ -2,20 +2,29 @@ import React, { useState } from 'react';
 import data from './data';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'antd';
+import styles from './sidebar.module.css';
+import logo from '../../assets/images/logo.svg';
 const { SubMenu } = Menu;
 
-const Sidebar = () => {
+const Sidebar = ({collapsed}) => {
   const [current, setCurrent] = useState('overview');
 
   return (
-    <>
+    <div className="ant-layout-sider-children">
+      <div className={styles.logo}>
+        <a href="/">
+          <img src={logo} alt="logo" />
+          <h1>Ant Design Mini</h1>
+        </a>
+      </div>
       <Menu
         theme="dark"
         onClick={(e) => setCurrent(e.key)}
-        style={{ width: 240 }}
+        style={{ padding: '16px 0', width: '100%' }}
         defaultOpenKeys={['overview', 'sub-res', 'sub-other']}
         selectedKeys={[current]}
         mode="inline"
+        inlineCollapsed={collapsed}
       >
         {
           data.map((item) => {
@@ -36,7 +45,7 @@ const Sidebar = () => {
               return (
                 <Menu.Item key={item.key}>
                   <Link to={item.url}>
-                    <Icon type={item.icon} />{item.label}
+                    <Icon type={item.icon} /><span>{item.label}</span>
                   </Link>
                 </Menu.Item>
               )
@@ -44,7 +53,7 @@ const Sidebar = () => {
           })
         }
       </Menu>
-    </>
+    </div>
   );
 };
 

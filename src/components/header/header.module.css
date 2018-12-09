@@ -1,10 +1,21 @@
-.header-title {
-  float: left;
-  height: 50px;
-  line-height: 20px;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: 700;
+.header-wrapper {
+  position: relative;
+  padding: 0;
+  height: 64px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+}
+
+.header-collapsed {
+  padding: 22px 24px;
+  height: 64px;
+  cursor: pointer;
+  transition: all .3s,padding 0s;
+  font-size: 20px;
+}
+
+.header-collapsed:hover, .header-dropdown-link:hover {
+  background-color: rgba(0, 0, 0, .025);
 }
 
 .header-user-info {
@@ -14,9 +25,14 @@
 
 .header-dropdown-link {
   display: inline-block;
+  padding: 0 12px;
   height: 100%;
-  padding: 15px 0 15px 15px;
   text-decoration: none;
-  color: #b6e1ec;
+  color: rgba(0, 0, 0, .65);
   transition: all .3s;
+  cursor: pointer;
+}
+
+.header-dropdown-link i:first-child {
+  font-size: 20px !important;
 }

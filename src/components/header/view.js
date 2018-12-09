@@ -20,18 +20,17 @@ const menu = (
   </Menu>
 );
 
-const Header = () => {
+const Header = ({collapsed, setCollapsed}) => {
   return (
-    <div>
-      <div className={styles['header-title']}>
-        <Icon type="cloud" />
-        XXX系统
-      </div>
+    <div className={styles['header-wrapper']}>
+      <span className={styles['header-collapsed']} onClick={() => setCollapsed(!collapsed)}>
+        <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+      </span>
       <div className={styles['header-user-info']}>
         <Dropdown overlay={menu} placement="bottomRight">
-          <a className={styles['header-dropdown-link']} href="/">
+          <span className={styles['header-dropdown-link']}>
             <Icon type="user" /> {LocalStorage.get('TA-username') } <Icon type="down" />
-          </a>
+          </span>
         </Dropdown>
       </div>
     </div>

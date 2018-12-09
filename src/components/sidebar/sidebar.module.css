@@ -1,0 +1,24 @@
+.logo {
+  position: relative;
+  padding-left: 14px;
+  height: 64px;
+  line-height: 64px;
+  transition: all .3s;
+  background: #002140;
+  overflow: hidden;
+}
+
+.logo img {
+  display: inline-block;
+  height: 36px;
+}
+
+.logo h1 {
+  display: inline-block;
+  margin: 0;
+  color: #fff;
+  vertical-align: middle;
+  font-size: 20px;
+  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-weight: 600;
+}
