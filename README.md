@@ -13,11 +13,11 @@ npm start
 * Redux           --状态管理
 * React-Router-V4 --多页面
 * Ant Design      --UI
-* react-intl      --国际化
-* gulp            --合并国际化词条
-* restify         --Mock服务器
+* React Intl      --国际化
+* Gulp            --合并国际化词条
+* Restify         --Mock服务器
 ## 主要解决的问题
-* react、redux、react-router-V4整合
+* React、Redux、React-Router-V4等整合
 * [组件](https://zhuanlan.zhihu.com/p/40134493)按功能划分
 * [国际化](https://zhuanlan.zhihu.com/p/40176138)
 * [服务器交互](https://zhuanlan.zhihu.com/p/40512216)
