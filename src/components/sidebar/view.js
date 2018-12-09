@@ -14,7 +14,7 @@ const Sidebar = ({collapsed}) => {
       <div className={styles.logo}>
         <a href="/">
           <img src={logo} alt="logo" />
-          <h1>Ant Design Mini</h1>
+          <h1>React Easy Start</h1>
         </a>
       </div>
       <Menu

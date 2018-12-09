@@ -30,7 +30,7 @@ const LoginPage = ({login}) => {
           <header>
             <a href="/">
               <img src={logo} alt="ant design mini" />
-              <h2>Ant Design Mini</h2>
+              <h2>React Easy Start</h2>
             </a>
             <div className={styles['nav-wrapper']}>
               <nav>
@@ -39,7 +39,7 @@ const LoginPage = ({login}) => {
                     <a href="https://zhuanlan.zhihu.com/rr1024" target="_blank" rel="noopener noreferrer">帮助</a>
                   </li>
                   <li>
-                    <a href="https://github.com/sunnut/ant-design-mini" target="_blank" rel="noopener noreferrer">Github</a>
+                    <a href="https://github.com/sunnut/react-easy-start" target="_blank" rel="noopener noreferrer">Github</a>
                   </li>
                 </ul>
               </nav>
@@ -52,7 +52,7 @@ const LoginPage = ({login}) => {
           <h3>欢迎登录</h3>
           <FormItem>
             <Input
-              placeholder="用户名"
+              placeholder="用户名: admin or user"
               prefix={<Icon type="user" />}
               suffix={userNameSuffix}
               value={userName}
@@ -64,7 +64,7 @@ const LoginPage = ({login}) => {
           <FormItem>
             <Input
               type="password"
-              placeholder="密码"
+              placeholder="密码: 123456"
               prefix={<Icon type="eye" />}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
