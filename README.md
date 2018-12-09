@@ -30,5 +30,5 @@ npm start
 ![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex1.png?raw=true "login")
 #### Dashboard with sidebar not collapsed
 ![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex2.png?raw=true "dashboard")
-#### Dashboard with sidebar not collapsed
+#### Dashboard with sidebar collapsed
 ![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex3.png?raw=true "dashboard")
