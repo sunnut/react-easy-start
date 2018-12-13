@@ -1,5 +1,5 @@
 ## React Easy Start
-常用的React脚手架，create-react-app太轻，用它搭建需要对react生态的各个知识点掌握好。相反，ant-design-pro太重，维护其代码还是挺复杂的，很多功能根本不需要，去掉也很有很大的工作量。本脚手架基于create-react-app加了具备ant-design-pro的框架功能(如下图，麻雀虽小，五脏俱全)，开发人员只需关注自己的业务功能。
+基于create-react-app搭建的React项目脚手架。
 ## Installation
 ```
 git clone https://github.com/sunnut/react-easy-start.git
@@ -16,7 +16,7 @@ npm start
 * React Intl      --国际化
 * Gulp            --合并国际化词条
 * Restify         --Mock服务器
-## 主要解决的问题
+## Solved Problems
 * React、Redux、React-Router-V4等整合
 * [组件](https://zhuanlan.zhihu.com/p/40134493)按功能划分
 * [国际化](https://zhuanlan.zhihu.com/p/40176138)
