@@ -18,6 +18,7 @@ npm start
 * Restify         --Mock服务器
 ## Solved Problems
 * React、Redux、React-Router-V4等整合
+* Code Splitting
 * [组件](https://zhuanlan.zhihu.com/p/40134493)按功能划分
 * [国际化](https://zhuanlan.zhihu.com/p/40176138)
 * [服务器交互](https://zhuanlan.zhihu.com/p/40512216)
