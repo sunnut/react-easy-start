@@ -1,5 +1,5 @@
 ## React Easy Start
-基于create-react-app搭建的React项目脚手架。
+A lightweight ant-design-pro based on create-react-app.
 ## Installation
 ```
 git clone https://github.com/sunnut/react-easy-start.git
@@ -9,22 +9,23 @@ npm run mock
 npm start
 ```  
 ## Dependencies
+* create-react-app
 * React 16.7      --hooks
-* Redux           --状态管理
-* React-Router-V4 --多页面
-* Ant Design      --UI
-* React Intl      --国际化
-* Gulp            --合并国际化词条
-* Restify         --Mock服务器
+* Redux           --state management
+* React-Router-V4 --page management
+* Ant Design      --UI components
+* React Intl      --I18N
+* Gulp            --Process management
+* Restify         --Mock Server
 ## Solved Problems
-* React、Redux、React-Router-V4等整合
+* Integated React with Redux、React-Router-V4 etc.
 * Code Splitting
-* [组件](https://zhuanlan.zhihu.com/p/40134493)按功能划分
-* [国际化](https://zhuanlan.zhihu.com/p/40176138)
-* [服务器交互](https://zhuanlan.zhihu.com/p/40512216)
-* [侧边栏](https://zhuanlan.zhihu.com/p/41111300)更易配置
-* [样式](https://zhuanlan.zhihu.com/p/50837353)使用局部结合全局
-* 全局等待效果 & 局部组件加载等待
+* [Component](https://zhuanlan.zhihu.com/p/40134493) splited by function
+* [I18N](https://zhuanlan.zhihu.com/p/40176138)
+* [Communicate with server](https://zhuanlan.zhihu.com/p/40512216)
+* [Flexiable Sidebar](https://zhuanlan.zhihu.com/p/41111300)更易配置
+* [CSS Modules](https://zhuanlan.zhihu.com/p/50837353)使用局部结合全局
+* Loading progressbar
 * ...
 ## Examples
 #### Login
