@@ -23,8 +23,8 @@ npm start
 * [Component](https://zhuanlan.zhihu.com/p/40134493) splited by function
 * [I18N](https://zhuanlan.zhihu.com/p/40176138)
 * [Communicate with server](https://zhuanlan.zhihu.com/p/40512216)
-* [Flexiable Sidebar](https://zhuanlan.zhihu.com/p/41111300)更易配置
-* [CSS Modules](https://zhuanlan.zhihu.com/p/50837353)使用局部结合全局
+* [Flexiable Sidebar](https://zhuanlan.zhihu.com/p/41111300)
+* [CSS Modules](https://zhuanlan.zhihu.com/p/50837353)
 * Loading progressbar
 * ...
 ## Examples
