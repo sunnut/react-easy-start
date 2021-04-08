@@ -10,23 +10,20 @@ const HomePage = () => {
   const [collapsed, setCollapsed] = useState(false);
   const sidebarWidth = collapsed ? 80 : 256;
   const sidebarStyle = {
-    flex: '0 0 ' + sidebarWidth + 'px',
-    width: sidebarWidth + 'px'
+    gridTemplateColumns: sidebarWidth + 'px 1fr'
   };
 
   return (
-    <div className="ant-layout ant-layout-has-sider">
-      <div style={sidebarStyle} className="ant-layout-sider ant-layout-sider-dark">
+    <div style={sidebarStyle} className={styles.container}>
+      <div className={styles.header}>
+        <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+      </div>
+      <div className={styles.sidebar}>
         <Sidebar collapsed={collapsed} />
       </div>
-      <div className={`${styles['content-wrapper']} ant-layout`}>
-        <div className={`${styles.header} ant-layout-header`}>
-          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
-        </div>
-        <div className={`${styles.content} ant-layout-content`}>
-          <Route path="/home/overview" component={Overview} />
-          <Route path="/home/topo" component={Topo} />
-        </div>
+      <div className={styles.content}>
+        <Route path="/home/overview" component={Overview} />
+        <Route path="/home/topo" component={Topo} />
       </div>
     </div>
   );

@@ -1,38 +1,76 @@
-import { message } from 'antd';
-
-const request = (url, config) => {
-  return fetch(url, config).then((res) => {
-    if (!res.ok) {
-      // 服务器异常返回
-      throw Error('');
-    }
-
-    return res.json();
-  }).then((resJson) => {
-    if (!resJson.success) {
-      // 项目内部认为的错误
-      throw Error('');
-    } else {
-      return resJson;
-    }
-  }).catch(() => {
-    // 公共错误处理
-    message.error('内部错误，请重新登录');
+//===================================================================
+// 处理超时
+//===================================================================
+const timerAction = (time = 5000) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(reject, time, 'Request timeout');
   });
 };
 
+//===================================================================
+// 发起请求
+//===================================================================
+const request = async (url, config) => {
+  try {
+    let res = await Promise.race([fetch(url, config), timerAction()]);
+
+    if (!res.ok) {
+      // 服务器异常返回
+      throw new Error('Server error');
+    }
+
+    if (res.url.includes('export') && res.status === 200) {
+      // 导出功能
+      let fetchResult = await res.blob();
+      let a = document.createElement('a');
+      let url = window.URL.createObjectURL(fetchResult);
+      let filename = 'CurrentAlarm-' + new Date().getTime() + '.csv';
+      a.href = url;
+      a.download = filename;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } else {
+      let fetchResult = await res.json();
+
+      if (fetchResult && !fetchResult.success) {
+        // 项目内部认为的错误
+        throw new Error(fetchResult.message || '');
+      } else {
+        return fetchResult;
+      }
+    }
+  } catch (e) {
+    throw e;
+  }
+};
+
+//===================================================================
 // GET请求
-export const get = (url) => {
+//===================================================================
+export const get = async (url, params) => {
+  if (params) {
+    let paramsArray = [];
+    Object.keys(params).forEach(key => paramsArray.push(key + '=' + params[key]));
+    
+    if (url.search(/\?/) === -1) {
+      url += '?' + paramsArray.join('&');
+    } else {
+      url += '&' + paramsArray.join('&');
+    }
+  }
+
   return request(url, {method: 'GET'});
 };
 
+//===================================================================
 // POST请求
-export const post = (url, data) => {
+//===================================================================
+export const post = async (url, data) => {
   return request(url, {
-    body: JSON.stringify(data),
+    method: 'POST',
     headers: {
       'content-type': 'application/json'
     },
-    method: 'POST'
+    body: JSON.stringify(data)
   });
 };

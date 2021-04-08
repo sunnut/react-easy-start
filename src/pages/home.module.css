@@ -1,13 +1,23 @@
-.content-wrapper {
-  min-height: 100vh !important;
+.container {
+  display: grid;
+  height: inherit;
+  grid-template-columns: 256px 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas: 'sidebar header' 'sidebar main';
 }
 
 .header {
-  padding: 0 !important;
-  width: 100%;
+  grid-area: header;
+  line-height: 64px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  border-right: 1px solid #f0f0f0;
+  background-color: #000c17;
 }
 
 .content {
-  padding-top: 0;
+  grid-area: main;
   margin: 24px;
 }
