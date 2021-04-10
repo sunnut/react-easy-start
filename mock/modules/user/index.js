@@ -7,6 +7,7 @@ module.exports = function(server) {
         let pageNo = req.query.pageNo;
         let pageSize = req.query.pageSize;
         let totalCount = data.length;
+        let result = data;
 
         if (pageNo != undefined) {
             pageNo = parseInt(pageNo);
@@ -26,14 +27,14 @@ module.exports = function(server) {
             let pageStart = pageNo * pageSize;
 
             if (pageStart + pageSize > totalCount) {
-                data = data.slice(pageStart, totalCount);
+                result = data.slice(pageStart, totalCount);
             } else {
-                data = data.slice(pageStart, pageStart + pageSize);
+                result = data.slice(pageStart, pageStart + pageSize);
             }
         }
 
         res.send({
-            data: data,
+            data: result,
             total: totalCount,
             message: "Query Success",
             success: true

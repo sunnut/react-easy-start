@@ -11,11 +11,11 @@
 }, {
   "icon": "area-chart",
   "key": "sub-res",
-  "label": "一级菜单",
+  "label": "资源管理",
   "children": [{
-    "key": "rrs",
-    "label": "二级菜单001",
-    "url": "/home/rrs"
+    "key": "users",
+    "label": "用户管理",
+    "url": "/home/users"
   }, {
     "key": "hms",
     "label": "二级菜单002",
