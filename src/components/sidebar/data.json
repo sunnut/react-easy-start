@@ -14,7 +14,7 @@
   "label": "资源管理",
   "children": [{
     "key": "users",
-    "label": "用户管理",
+    "label": "Table 表格",
     "url": "/home/users"
   }, {
     "key": "hms",

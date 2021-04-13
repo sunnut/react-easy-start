@@ -1,31 +1,16 @@
 import * as Fetch from '../../util/fetch';
 
-export const getColumns = () => {
-    return [
-        {
-            title: '姓名',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: '电子邮件',
-            dataIndex: 'email',
-            key: 'email',
-        },
-        {
-            title: '电话',
-            dataIndex: 'phone',
-            key: 'phone',
-        },
-        {
-            title: '住址',
-            dataIndex: 'addr',
-            key: 'addr',
-        }
-    ];
-};
-
+//===================================================================
+// User Data Request
+//===================================================================
 export const getUsers = params => {
     const url = '/api/v1.0/users';
     return Fetch.get(url, params);
+};
+
+//===================================================================
+// renew the params after table changed
+//===================================================================
+export const getParams = (pagination, filters, sorter, extra) => {
+    return {pageNo: pagination.current, pageSize: pagination.pageSize};
 };

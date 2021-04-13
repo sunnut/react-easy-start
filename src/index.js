@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import en_US from 'antd/lib/locale-provider/en_US';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import zh from 'react-intl/locale-data/zh';
@@ -29,11 +32,13 @@ if (language === 'zh') {
 
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <ConfigProvider locale={locale === 'en' ? en_US : zh_CN}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </ConfigProvider>
   </IntlProvider>,
   document.getElementById('root')
 );

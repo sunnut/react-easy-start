@@ -1,25 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Table  } from 'antd';
-import { getColumns, getUsers } from './api';
-import useTable from '../../util/use-table';
-
-const columns = getColumns();
+import * as UserAPI from './api';
+import getColumns from './columns';
+import { useTable } from '../../components/hooks';
 
 const UserComponent = () => {
-  const [success, data, request] = useTable({
-    getData: getUsers,
-    params: null,
+  const columns = useMemo(() => getColumns(), []);
+
+  const [data, request] = useTable({
+    getData: UserAPI.getUsers,
     onChange: (pagination, filters, sorter, extra) => {
-        request({pageNo: pagination.current, pageSize: pagination.pageSize});
+      request(UserAPI.getParams(pagination, filters, sorter, extra));
     }
   });
 
   return (
-      <>
-        {success && <Table columns={columns} {...data} />}
-      </>
+    <>
+      <Table columns={columns} {...data} />
+    </>
   );
 };
 
 export default UserComponent;
-
