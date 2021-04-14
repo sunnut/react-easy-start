@@ -1,7 +1,7 @@
 import useFetch from './useFetch';
 import usePagination, { defaultPagination } from './usePagination';
 import useRowSelection from './useRowSelection';
-import { useMemo, useCallback } from 'react';
+import { useMemo } from 'react';
 
 //===================================================================
 // Hooks For Table

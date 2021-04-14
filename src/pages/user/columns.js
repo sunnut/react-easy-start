@@ -29,7 +29,7 @@ const getColumns = (getUserDetail) => {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
-        <a onClick={() => getUserDetail({id: record.id})}>detail</a>
+        <a href="javascript:void(0);" onClick={() => getUserDetail({id: record.id})}>detail</a>
       ),
     }
   ];
