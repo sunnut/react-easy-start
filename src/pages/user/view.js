@@ -29,9 +29,9 @@ const UserComponent = () => {
         </div>
       </div>
       <Table columns={columns} {...tableProps} />
-	  {selectedUser && (
-		<UserDetail user={selectedUser.data} onClose={() => setSelectedUser(null)} />
-	  )}
+	    {selectedUser && (
+		    <UserDetail user={selectedUser.data} onClose={() => setSelectedUser(null)} />
+	    )}
     </React.Suspense>
   );
 };
