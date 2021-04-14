@@ -20,7 +20,6 @@ const UserComponent = () => {
 
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
-      {selectedUser && <UserDetail user={selectedUser.data} onClose={() => setSelectedUser(null)} />}
       <div style={{marginBottom: '8px'}} className="clearfix">
         <div style={{float: 'left'}}>
           <Button type="primary" onClick={() => API.refresh(refetchUsers, params, resetSelection)} icon="reload">
@@ -30,6 +29,9 @@ const UserComponent = () => {
         </div>
       </div>
       <Table columns={columns} {...tableProps} />
+	  {selectedUser && (
+		<UserDetail user={selectedUser.data} onClose={() => setSelectedUser(null)} />
+	  )}
     </React.Suspense>
   );
 };
