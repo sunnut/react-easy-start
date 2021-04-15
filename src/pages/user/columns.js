@@ -8,12 +8,24 @@ const getColumns = (getUserDetail) => {
     {
       title: 'Name',
       dataIndex: 'name',
-      key: 'name'
+      key: 'name',
+      sorter: true,
+      filters: [
+        {
+          text: 'name1',
+          value: 'name1',
+        },
+        {
+          text: 'name8',
+          value: 'name8',
+        }
+      ]
     },
     {
       title: 'Email',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      sorter: true
     },
     {
       title: 'Tel',

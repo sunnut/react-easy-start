@@ -74,3 +74,29 @@ export const post = async (url, data) => {
     body: JSON.stringify(data)
   });
 };
+
+//===================================================================
+// PUT请求
+//===================================================================
+export const put = async (url, data) => {
+  return request(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+//===================================================================
+// DELETE请求
+//===================================================================
+export const del = async (url, data) => {
+  return request(url, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+};

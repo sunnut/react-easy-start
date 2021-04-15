@@ -74,6 +74,10 @@ module.exports = function(server) {
 				return x;
 			}
 		});
+		res.send({
+			message: "Edit Success",
+			success: true
+		});
 	});
 
 	// 刪除
@@ -84,4 +88,14 @@ module.exports = function(server) {
 			success: true
 		});
 	});
+
+	// 批量删除
+  server.post('/api/v1.0/users/batchDelete', function(req, res) {
+    let deleteIds = req.body.ids;
+    data = data.filter(x => !deleteIds.includes(x.id));
+    res.send({
+      message: "Batch delete Success",
+      success: true
+    });
+  });
 };

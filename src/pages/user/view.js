@@ -1,37 +1,43 @@
-import React, { useMemo } from 'react';
-import { Button, Table  } from 'antd';
+import React, { useMemo, useRef, useCallback } from 'react';
+import { Table  } from 'antd';
 import * as API from './api';
 import getColumns from './columns';
 import { useFetch, useTable } from '../../components/hooks';
+import BatchActions from './batchActions';
 
 const UserDetailPromise = import('./detail');
 const UserDetail = React.lazy(() => UserDetailPromise);
 
 const UserComponent = () => {
-  const [tableProps, refetchUsers, params, , resetSelection] = useTable({
+  const [tableProps, refetchUsers, initParams, selectedList, resetSelection] = useTable({
     getData: API.getUsers,
     options: {
-      onChange: (...pageParams) => refetchUsers(API.getParams(...pageParams))
+      onChange: (...pageParams) => research(API.getParams(...pageParams))
     }
   });
+  const searchParams = useRef(initParams);
+  const research = useCallback(changedParams => {
+    if (changedParams) {
+      let newParams = {...searchParams.current, ...changedParams};
+      API.clearEmptyParams(newParams);
+      searchParams.current = newParams;
+      refetchUsers(searchParams.current);
+    } else {
+      refetchUsers({...searchParams.current});
+    }
 
-  const [ , selectedUser, setSelectedUser, getUserDetail] = useFetch(API.getUserDetail, false);
+    resetSelection();
+  }, []);
+  const [ , userInfo, setUserInfo, getUserDetail] = useFetch(API.getUserDetail, false);
   const columns = useMemo(() => getColumns(getUserDetail), []);
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <div style={{marginBottom: '8px'}} className="clearfix">
-        <div style={{float: 'left'}}>
-          <Button type="primary" onClick={() => API.refresh(refetchUsers, params, resetSelection)} icon="reload">
-            刷新
-          </Button>
-          &nbsp;&nbsp;
-        </div>
-      </div>
+    <React.Suspense fallback={<div>Loading</div>}>
+      <BatchActions selectedList={selectedList} research={research} />
       <Table columns={columns} {...tableProps} />
-	    {selectedUser && (
-		    <UserDetail user={selectedUser.data} onClose={() => setSelectedUser(null)} />
-	    )}
+      {userInfo && (
+        <UserDetail user={userInfo.data} onClose={() => setUserInfo(null)} />
+      )}
     </React.Suspense>
   );
 };

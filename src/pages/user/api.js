@@ -16,10 +16,42 @@ export const getUserDetail = params => {
 };
 
 //===================================================================
-// renew the params after table changed
+// delete users
 //===================================================================
-export const getParams = (pagination, filters, sorter, extra) => {
-  return {pageNo: pagination.current, pageSize: pagination.pageSize};
+export const deleteUser = params => {
+  return Fetch.post('/api/v1.0/users/batchDelete', params);
+};
+
+const SORTER_VALUES = {'ascend': 'asc', 'descend': 'desc'};
+
+//===================================================================
+// get the page params after table changed
+//===================================================================
+export const getParams = (pagination, filters, sorter) => {
+  return {
+    pageNo: pagination.current,
+    pageSize: pagination.pageSize,
+    sortField: sorter.field,
+    sortOrder: SORTER_VALUES[sorter.order],
+    ...filters
+  };
+};
+
+//===================================================================
+// clear the empty data of params
+//===================================================================
+export const clearEmptyParams = (params) => {
+  if (!params.sortOrder) {
+    // no order
+    delete params.sortOrder;
+    delete params.sortField;
+  }
+
+  for (let [key, value] of Object.entries(params)) {
+    if (Array.isArray(value) && value.length === 0) {
+      delete params[key];
+    }
+  }
 };
 
 //===================================================================
