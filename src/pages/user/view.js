@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Table  } from 'antd';
 import * as API from './api';
-import getColumns from './columns';
+import useColumn from './useColumn';
 import { useFetch, useTable } from '../../components/hooks';
 import BatchActions from './batchActions';
 
@@ -19,7 +19,7 @@ const UserComponent = () => {
   const research = useCallback(changedParams => {
     if (changedParams) {
       let newParams = {...searchParams.current, ...changedParams};
-      API.clearEmptyParams(newParams);
+      API.processParams(newParams);
       searchParams.current = newParams;
       refetchUsers(searchParams.current);
     } else {
@@ -29,7 +29,7 @@ const UserComponent = () => {
     resetSelection();
   }, []);
   const [ , userInfo, setUserInfo, getUserDetail] = useFetch(API.getUserDetail, false);
-  const columns = useMemo(() => getColumns(getUserDetail), []);
+  const [columns] = useColumn({getUserDetail});
 
   return (
     <React.Suspense fallback={<div>Loading</div>}>

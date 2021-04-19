@@ -3,43 +3,91 @@ let UUID = require('../util/UUID.js');
 
 module.exports = function(server) {
 	// 查询
-	server.get('/api/v1.0/users', function(req, res) {
-		let pageNo = req.query.pageNo;
-		let pageSize = req.query.pageSize;
-		let totalCount = data.length;
-		let result = data;
+  server.get('/api/v1.0/users', function(req, res) {
+    let pageNo = req.query.pageNo;
+    let pageSize = req.query.pageSize;
+    let totalCount = data.length;
+    let result = data;
 
-		if (pageNo != undefined) {
-			pageNo = parseInt(pageNo);
+    let filterNames = req.query.name;
 
-			if (pageNo < 1) {
-				pageNo = 0;
-			} else {
-				pageNo = pageNo - 1;
-			}
+    if (filterNames !== undefined) {
+      filterNames = filterNames.split(',');
+      result = result.filter(x => filterNames.includes(x.name));
+    }
 
-			if (!pageSize) {
-				pageSize = 10;
-			} else {
-				pageSize = parseInt(pageSize);
-			}
+    let searchPhone = req.query.phone;
 
-			let pageStart = pageNo * pageSize;
+    if (searchPhone !== undefined) {
+      result = result.filter(x => x.phone.includes(searchPhone));
+    }
 
-			if (pageStart + pageSize > totalCount) {
-				result = data.slice(pageStart, totalCount);
-			} else {
-				result = data.slice(pageStart, pageStart + pageSize);
-			}
-		}
+    let createDates = req.query.createDate;
 
-		res.send({
-			data: result,
-			total: totalCount,
-			message: "Query Success",
-			success: true
-		});
-	});
+    if (createDates !== undefined) {
+      createDates = createDates.split(',');
+      result = result.filter(x => {
+        let time = new Date(x.createDate).getTime();
+        return createDates[0] < time && time < createDates[1];
+      });
+    }
+
+    if (pageNo != undefined) {
+      pageNo = parseInt(pageNo);
+
+      if (pageNo < 1) {
+        pageNo = 0;
+      } else {
+        pageNo = pageNo - 1;
+      }
+
+      if (!pageSize) {
+        pageSize = 10;
+      } else {
+        pageSize = parseInt(pageSize);
+      }
+
+      let pageStart = pageNo * pageSize;
+
+      if (pageStart + pageSize > totalCount) {
+        result = result.slice(pageStart, totalCount);
+      } else {
+        result = result.slice(pageStart, pageStart + pageSize);
+      }
+    }
+
+    let sortField = req.query.sortField;
+
+    if (sortField !== undefined) {
+      let sortOrder = req.query.sortOrder;
+
+      result.sort((a, b) => {
+        let aVal = a[sortField];
+        let bVal = b[sortField];
+
+        if (typeof aVal === 'number') {
+          return sortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+        } else if (typeof aVal === 'string') {
+          if (aVal < bVal) {
+            return sortOrder === 'desc' ? 1 : -1;
+          }
+
+          if (aVal > bVal) {
+            return sortOrder === 'desc' ? -1 : 1;
+          }
+
+          return 0;
+        }
+      });
+    }
+
+    res.send({
+      data: result,
+      total: totalCount,
+      message: "Query Success",
+      success: true
+    });
+  });
 
 	// 查询详情
 	server.get('/api/v1.0/users/:id', function(req, res) {

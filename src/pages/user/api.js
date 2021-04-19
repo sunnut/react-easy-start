@@ -40,7 +40,7 @@ export const getParams = (pagination, filters, sorter) => {
 //===================================================================
 // clear the empty data of params
 //===================================================================
-export const clearEmptyParams = (params) => {
+export const processParams = (params) => {
   if (!params.sortOrder) {
     // no order
     delete params.sortOrder;
@@ -48,8 +48,20 @@ export const clearEmptyParams = (params) => {
   }
 
   for (let [key, value] of Object.entries(params)) {
-    if (Array.isArray(value) && value.length === 0) {
-      delete params[key];
+    if (Array.isArray(value)) {
+      if (value.length === 0) {
+        delete params[key];
+      } else {
+        params[key] = value.map(item => {
+          if (typeof item === 'object' && item._isAMomentObject) {
+            return item.valueOf();
+          } else {
+            return item;
+          }
+        });
+      }
+    } else if (typeof value === 'object' && value._isAMomentObject) {
+      params[key] = value.valueOf();
     }
   }
 };

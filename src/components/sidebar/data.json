@@ -4,17 +4,17 @@
   "label": "总览",
   "url": "/home/overview"
 }, {
-  "icon": "fork",
-  "key": "topo",
-  "label": "拓扑",
-  "url": "/home/topo"
+  "icon": "table",
+  "key": "table",
+  "label": "Table 表格",
+  "url": "/home/users"
 }, {
   "icon": "area-chart",
   "key": "sub-res",
-  "label": "资源管理",
+  "label": "一级菜单",
   "children": [{
     "key": "users",
-    "label": "Table 表格",
+    "label": "二级菜单001",
     "url": "/home/users"
   }, {
     "key": "hms",

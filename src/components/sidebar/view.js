@@ -6,8 +6,31 @@ import styles from './sidebar.module.css';
 import logo from '../../assets/images/logo.svg';
 const { SubMenu } = Menu;
 
+//============================================================
+// 根据当前页面路由寻找当前菜单
+//============================================================
+const getCurrentMenu = (tree) => {
+  const currentPath = window.location.pathname;
+  
+  for (let node of tree) {
+    if (currentPath.includes(node.url)) {
+      return node.key;
+    }
+
+    if (node.children) {
+      let res = getCurrentMenu(node.children);
+
+      if (res) {
+        return res;
+      }
+    }
+  }
+
+  return null;
+};
+
 const Sidebar = ({collapsed}) => {
-  const [current, setCurrent] = useState('overview');
+  const [current, setCurrent] = useState(getCurrentMenu(data) || 'overview');
 
   return (
     <div className="ant-layout-sider-children">

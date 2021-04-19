@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
-import { view as Header } from '../components/header';
-import { view as Sidebar } from '../components/sidebar';
-import { view as Overview } from './overview';
-import { view as Topo } from './topo';
-import { view as User } from './user';
+import { view as Header } from '../../components/header';
+import { view as Sidebar } from '../../components/sidebar';
+import { view as Overview } from '../overview';
+import { view as Topo } from '../topo';
+import { view as User } from '../user';
 import styles from './home.module.css';
 
 const HomePage = () => {

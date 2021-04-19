@@ -10,7 +10,7 @@ npm start
 ```  
 ## Dependencies
 * create-react-app
-* React 16.7      --hooks
+* React 16.13.0   --hooks
 * Redux           --state management
 * React-Router-V4 --page management
 * Ant Design      --UI components
@@ -32,5 +32,3 @@ npm start
 ![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex1.png?raw=true "login")
 #### Dashboard with sidebar not collapsed
 ![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex2.png?raw=true "dashboard")
-#### Dashboard with sidebar collapsed
-![Screenshot](https://github.com/sunnut/react-easy-start/blob/master/images/ex3.png?raw=true "dashboard")

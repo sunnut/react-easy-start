@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Checkbox, Button, Form, Icon, Input } from 'antd';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { actions as loginActions } from './index';
 import logo from '../assets/images/logo.svg';
 import styles from './login.module.css';
 const FormItem = Form.Item;
 
-const LoginPage = ({login}) => {
-  let userNameInput = null;
+const LoginPage = ({history}) => {
+  const inputRef = useRef(null);
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const emitEmptyUserName = () => {
-    userNameInput.focus();
+    inputRef.current.focus();
     setUserName('');
   };
 
   const gotoLogin = (e) => {
     e.preventDefault();
-    login({userName, password});
+    dispatch(loginActions.login({userName, password}, history));
   };
 
   const userNameSuffix = userName ? <Icon type="close-circle" onClick={emitEmptyUserName} /> : null;
@@ -57,7 +58,7 @@ const LoginPage = ({login}) => {
               suffix={userNameSuffix}
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              ref={node => userNameInput = node}
+              ref={inputRef}
               size="large"
             />
           </FormItem>
@@ -88,11 +89,4 @@ const LoginPage = ({login}) => {
   );
 };
 
-const mapDispachToProps  = (dispatch, props) => ({
-  login: (formValue) => {
-    // 等待
-    dispatch(loginActions.login(formValue, props.history));
-  }
-});
-
-export default connect(null, mapDispachToProps)(LoginPage);
+export default LoginPage;
