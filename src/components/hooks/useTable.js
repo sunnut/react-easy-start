@@ -1,7 +1,7 @@
 import useFetch from './useFetch';
 import usePagination, { defaultPagination } from './usePagination';
 import useRowSelection from './useRowSelection';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 //===================================================================
 // Hooks For Table
@@ -17,8 +17,8 @@ export default function useTable({getData, params = null, options = {}}) {
     };
   }
 
-  const [loading, result, , request, newParams] = useFetch(getData, reqParams);
-  const dataSource = useMemo(() => addKeyForTableData(hidePagination, result, newParams), [result]);
+  const [loading, result, , request, oldParams] = useFetch(getData, reqParams);
+  const dataSource = useMemo(() => addKeyForTableData(hidePagination, result, oldParams), [result]);
 
   const paginationConfig = {
     total: hidePagination ? 0 : (result === null ? 0 : result.total),
@@ -36,7 +36,12 @@ export default function useTable({getData, params = null, options = {}}) {
     rowSelection
   };
 
-  return [tableProps, request, newParams, selectedList, resetSelection];
+  const refresh = useCallback(newParams => {
+    request(newParams || {...oldParams});
+    resetSelection();
+  }, []);
+
+  return [tableProps, refresh, oldParams, selectedList];
 }
 
 //===================================================================

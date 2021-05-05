@@ -1,5 +1,6 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { Table  } from 'antd';
+import * as ActionTypes from './actionTypes';
 import * as API from './api';
 import useColumn from './useColumn';
 import { useFetch, useTable } from '../../components/hooks';
@@ -9,31 +10,32 @@ const UserDetailPromise = import('./detail');
 const UserDetail = React.lazy(() => UserDetailPromise);
 
 const UserComponent = () => {
-  const [tableProps, refetchUsers, initParams, selectedList, resetSelection] = useTable({
+  const [tableProps, refresh, oldParams, selectedList] = useTable({
     getData: API.getUsers,
     options: {
-      onChange: (...pageParams) => research(API.getParams(...pageParams))
+      onChange: (...pageParams) => {
+        let newParams = {...oldParams, ...API.getParams(...pageParams)};
+        API.processParams(newParams);
+        refresh(newParams);
+      }
     }
   });
-  const searchParams = useRef(initParams);
-  const research = useCallback(changedParams => {
-    if (changedParams) {
-      let newParams = {...searchParams.current, ...changedParams};
-      API.processParams(newParams);
-      searchParams.current = newParams;
-      refetchUsers(searchParams.current);
-    } else {
-      refetchUsers({...searchParams.current});
-    }
+  const [ , userInfo, setUserInfo, refetchUser] = useFetch(API.getUserDetail, false);
+  const [columns, currentUser] = useColumn();
 
-    resetSelection();
-  }, []);
-  const [ , userInfo, setUserInfo, getUserDetail] = useFetch(API.getUserDetail, false);
-  const [columns] = useColumn({getUserDetail});
+  useEffect(() => {
+    if (currentUser !== null) {
+      switch (currentUser.flag) {
+        case ActionTypes.ACTION_DETAIL: 
+          refetchUser({id: currentUser.id});
+          break;
+      }
+    }
+  }, [currentUser]);
 
   return (
     <React.Suspense fallback={<div>Loading</div>}>
-      <BatchActions selectedList={selectedList} research={research} />
+      <BatchActions selectedList={selectedList} refresh={refresh} />
       <Table columns={columns} {...tableProps} />
       {userInfo && (
         <UserDetail user={userInfo.data} onClose={() => setUserInfo(null)} />

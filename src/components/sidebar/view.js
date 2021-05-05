@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import data from './data';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'antd';
 import styles from './sidebar.module.css';
 import logo from '../../assets/images/logo.svg';
+import useData from './useData';
 const { SubMenu } = Menu;
 
 //============================================================
@@ -30,6 +30,7 @@ const getCurrentMenu = (tree) => {
 };
 
 const Sidebar = ({collapsed}) => {
+  const data = useData();
   const [current, setCurrent] = useState(getCurrentMenu(data) || 'overview');
 
   return (

@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Button, DatePicker, Icon, Input } from 'antd';
+import * as ActionTypes from './actionTypes';
 
 const OperButtonComponent = ({ confirm, clearFilters }) => (
   <>
@@ -68,7 +69,8 @@ const getTimeSearchProps = () => ({
 //===================================================================
 // Table Column Definition
 //===================================================================
-export default function useColumn(action) {
+export default function useColumn() {
+  const [currentItem, setCurrentItem] = useState(null);
   const columns = useMemo(() => [
     {
       title: 'Name',
@@ -113,10 +115,10 @@ export default function useColumn(action) {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
-        <a href="javascript:void(0);" onClick={() => action.getUserDetail({id: record.id})}>detail</a>
+        <a onClick={() => setCurrentItem({flag: ActionTypes.ACTION_DETAIL, ...record})}>detail</a>
       ),
     }
   ], []);
 
-  return [columns];
+  return [columns, currentItem];
 };

@@ -1,3 +1,8 @@
 {
-	"Name": "名称"
+	"FirstLevel": "一级菜单",
+	"Name": "名称",
+	"Overview": "总览",
+	"SecondLevel": "二级菜单",
+	"Setting": "设置",
+	"Table": "表格组件"
 }
