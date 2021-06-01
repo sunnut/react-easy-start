@@ -1,3 +1,4 @@
+import { message } from 'antd';
 //===================================================================
 // 处理超时
 //===================================================================
@@ -32,7 +33,7 @@ const request = async (url, config) => {
     } else {
       let fetchResult = await res.json();
 
-      if (fetchResult && !fetchResult.success) {
+      if (fetchResult && (fetchResult.success === false || fetchResult.isSuc === false)) {
         // 项目内部认为的错误
         throw new Error(fetchResult.message || '');
       } else {
@@ -40,7 +41,7 @@ const request = async (url, config) => {
       }
     }
   } catch (e) {
-    throw e;
+    message.error(e.toString());
   }
 };
 

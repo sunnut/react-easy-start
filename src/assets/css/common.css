@@ -85,3 +85,13 @@ ol, ul {
 .clearfix {
   zoom: 1;
 }
+
+.webuploader-pick {
+  display: block;
+  padding: 5px 15px;
+  background: transparent;
+}
+
+#upload-pkg-btn {
+  padding: 0;
+}

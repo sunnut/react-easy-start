@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Test1.tar.gz",
+    "operator": "admin",
+    "version": "1.1.0",
+    "percentage": 20,
+    "time": "2021-03-23 20:35:30"
+  },
+  {
+    "id": "2",
+    "name": "Test2.tar.gz",
+    "operator": "admin",
+    "version": "1.1.0",
+    "percentage": 50,
+    "time": "2021-03-23 20:35:30"
+  },
+  {
+    "id": "3",
+    "name": "Test3.tar.gz",
+    "operator": "admin",
+    "version": "1.1.0",
+    "percentage": 100,
+    "time": "2021-03-23 20:35:30"
+  }
+]

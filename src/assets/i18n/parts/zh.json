@@ -1,8 +1,21 @@
 {
+	"Cancel": "取消",
+	"Confirm": "确认",
+	"Delete": "删除",
+	"Delete.Tip": "确认删除所选项吗?",
 	"FirstLevel": "一级菜单",
 	"Name": "名称",
+	"Import": "导入",
+	"Operator": "操作员",
 	"Overview": "总览",
+	"Progress": "进度",
+	"Refresh": "刷新",
 	"SecondLevel": "二级菜单",
 	"Setting": "设置",
-	"Table": "表格组件"
+	"Table": "表格",
+	"Table.Component": "表格组件",
+	"Time": "时间",
+	"Upload": "上传",
+	"Upload.BigFile": "大文件断点上传",
+	"Version": "版本"
 }

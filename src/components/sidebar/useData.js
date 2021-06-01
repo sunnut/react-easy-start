@@ -11,8 +11,13 @@ export default function useData() {
   }, {
     "icon": "table",
     "key": "table",
-    "label": formatMessage({id: 'Table'}),
+    "label": formatMessage({id: 'Table.Component'}),
     "url": "/home/users"
+  }, {
+    "icon": "file",
+    "key": "file",
+    "label": formatMessage({id: 'Upload.BigFile'}),
+    "url": "/home/pkgs"
   }, {
     "icon": "area-chart",
     "key": "sub-res",

@@ -17,7 +17,7 @@ export default function useTable({getData, params = null, options = {}}) {
     };
   }
 
-  const [loading, result, , request, oldParams] = useFetch(getData, reqParams);
+  const [loading, result, setResult, request, oldParams] = useFetch(getData, reqParams);
   const dataSource = useMemo(() => addKeyForTableData(hidePagination, result, oldParams), [result]);
 
   const paginationConfig = {
@@ -41,7 +41,7 @@ export default function useTable({getData, params = null, options = {}}) {
     resetSelection();
   }, []);
 
-  return [tableProps, refresh, oldParams, selectedList];
+  return [tableProps, refresh, oldParams, selectedList, resetSelection, result, setResult];
 }
 
 //===================================================================
