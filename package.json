@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.26.19",
+    "antd": "^5.2.3",
     "body-parser": "^1.20.1",
     "express": "^4.17.3",
     "express-query-parser": "^1.2.0",
